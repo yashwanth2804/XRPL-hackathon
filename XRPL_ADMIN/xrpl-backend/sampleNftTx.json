@@ -1,0 +1,34 @@
+{
+  "id": 6,
+  "result": {
+    "accepted": true,
+    "account_sequence_available": 33374483,
+    "account_sequence_next": 33374483,
+    "applied": true,
+    "broadcast": true,
+    "engine_result": "tesSUCCESS",
+    "engine_result_code": 0,
+    "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+    "kept": true,
+    "open_ledger_cost": "10",
+    "queued": false,
+    "tx_blob": "12001922000000012400000000201B0200588A202901FD40E6202A0001DD2468400000000000000C7321EDAE53830F4290CA3975674DD95FF84BA5E7F12110AACCDDC0613E31A47E10BA49744091F4432A99112D4AC76FAF290388045AC9C397AD31BC1974A826DCF3B56EFC1929DB07C7228DEE24ADC9B6901F3EBC719897596FF74AE90F226F7E7A9BA9B30B75027B7D8114D652E36958FB7A182B2380619917FC611410FA198414166CA90D05CEBA0CF1EEDCED0A3C96C2CBA93C2F",
+    "tx_json": {
+      "Account": "rLYNuNYmW78wJtfAaxVf8xBz6DSQ6DMYL3",
+      "Fee": "12",
+      "Flags": 1,
+      "Issuer": "rss2snJN8u2Gtnu2jYWm9sqp9UeK975uSj",
+      "LastLedgerSequence": 33577098,
+      "NFTokenTaxon": 122148,
+      "Sequence": 0,
+      "SigningPubKey": "EDAE53830F4290CA3975674DD95FF84BA5E7F12110AACCDDC0613E31A47E10BA49",
+      "TicketSequence": 33374438,
+      "TransactionType": "NFTokenMint",
+      "TxnSignature": "91F4432A99112D4AC76FAF290388045AC9C397AD31BC1974A826DCF3B56EFC1929DB07C7228DEE24ADC9B6901F3EBC719897596FF74AE90F226F7E7A9BA9B30B",
+      "URI": "7B7D",
+      "hash": "FD756F9C50473AF8D0BCE8E772201D437125C14D5FF44722782AF1D12C5B585F"
+    },
+    "validated_ledger_index": 33577078
+  },
+  "type": "response"
+}

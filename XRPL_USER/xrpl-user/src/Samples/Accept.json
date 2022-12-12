@@ -1,0 +1,17 @@
+{
+  "payload_uuidv4": "d5fd7dc5-97d5-459a-819a-a51c7a86a1ca",
+  "reference_call_uuidv4": "f45c79c4-a8cf-4a2f-972f-6efc5bc9d4ea",
+  "signed": true,
+  "user_token": true,
+  "return_url": {
+    "app": null,
+    "web": null
+  },
+  "txid": "C211B9BD2F7E616067E9A84360F3294652EDB256B285ED533254A33484BBCBD1",
+  "opened_by_deeplink": true,
+  "custom_meta": {
+    "identifier": null,
+    "blob": null,
+    "instruction": null
+  }
+}

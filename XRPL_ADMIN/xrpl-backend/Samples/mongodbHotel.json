@@ -1,0 +1,16 @@
+{
+  "_id": { "$oid": "63943dcf473bad530ce06196" },
+  "ownerxrpaddr": "rss2snJN8u2Gtnu2jYWm9sqp9UeK975uSj",
+  "issuerxrpaddr": "rLYNuNYmW78wJtfAaxVf8xBz6DSQ6DMYL3",
+  "hoteltaxon": { "$numberInt": "122148" },
+  "city": "tirupati",
+  "price": { "$numberInt": "200" },
+  "isrentable": true,
+  "availableforrent": false,
+  "image": "",
+  "nftaddr": "",
+  "type": "1",
+  "isMinted": "false",
+  "hotelname": "viceroy",
+  "__v": { "$numberInt": "0" }
+}

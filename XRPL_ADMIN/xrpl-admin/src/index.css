@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-primary {
+    @apply px-4 mt-3  rounded-md w-full h-12  font-bold  
+      bg-brand text-white;
+  }
+  .chip-dis {
+    @apply bg-bgcolor rounded-md px-4 py-2  hover:cursor-pointer;
+  }
+  .chip {
+    @apply bg-brand rounded-md px-4 py-2  hover:cursor-pointer text-white font-semibold;
+  }
+}
