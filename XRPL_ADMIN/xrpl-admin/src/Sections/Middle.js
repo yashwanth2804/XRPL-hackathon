@@ -25,31 +25,27 @@ function Middle() {
     });
     if (resp.status == 200) {
       const { refs } = resp.data.auth;
-      console.log(refs);
+
       setAuthorisingResp(refs);
     }
   };
 
   useEffect(() => {
     let socket;
-    console.log("### called  ----------------------------");
-    if (Object.keys(authorisingResp).length !== 0) {
-      console.log("Empty");
 
+    if (Object.keys(authorisingResp).length !== 0) {
       // Create a new WebSocket connection
       socket = new WebSocket(authorisingResp.websocket_status);
 
       // Set up event listeners to handle incoming messages
       socket.onmessage = async (event) => {
         // Handle incoming message
-        console.log(event);
-        console.log("@@ on mEssage", event.data);
+
         const dataparsed = JSON.parse(event.data);
-        console.log(dataparsed);
-        console.log("### ", dataparsed.signed);
+
         if (dataparsed.signed !== undefined) {
           // has signed or rejected
-          console.log("----------$$------>", dataparsed.signed);
+
           if (dataparsed.signed == true) {
             // make api call update
             const resp = await axios.post(
@@ -69,7 +65,6 @@ function Middle() {
 
       socket.onclose = (event) => {
         // Handle WebSocket close
-        console.log(event);
       };
 
       // Save the WebSocket connection in state

@@ -31,7 +31,7 @@ function Bookings() {
         params: { xrpaddr: addr },
       }
     );
-    console.log(resp);
+
     setBookings(resp.data.bookings);
   };
 

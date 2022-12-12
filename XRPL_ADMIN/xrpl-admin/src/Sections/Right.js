@@ -20,7 +20,7 @@ function Right() {
     // hoteltaxon: city: price: isrentable: availableforrent: roomnumber: image: nftaddr: type: isMinted: hotelname;
 
     //check if room exist
-    console.log("$ *** Rooomlist", roomsList, addRoom.roomNum);
+
     // const roomObj = {
     //   ownerxrpaddr: admin.xrpaddr,
     //   hoteltaxon: admin.hoteltaxon,
@@ -52,7 +52,7 @@ function Right() {
     resetState();
   };
   // const addRoomtoList = (obj) => {
-  //   console.log(obj);
+  //
   // };
   const resetState = () => {
     // setType(0);

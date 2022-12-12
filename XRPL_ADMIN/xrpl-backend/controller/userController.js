@@ -6,12 +6,11 @@ const User = require("../models/User");
 exports.login = async (req, res) => {
   // Get user input from the request body
   const { xrpaddr, pin } = req.body;
-  console.log("@@ ", xrpaddr, pin);
+
   try {
     const user = await User.find({ xrpaddr: xrpaddr });
-    console.log("@@ user", user);
+
     if (user.length === 0) {
-      console.log("USER not fpound");
       // sign up the user
       const re = saveuser(req.body);
       if (re) {
@@ -22,7 +21,7 @@ exports.login = async (req, res) => {
     } else {
       const userAr = await User.find({ xrpaddr: xrpaddr });
       const user = userAr[0];
-      console.log("User found", user);
+
       try {
         const passwordIsCorrect = bcrypt.compareSync(pin, user.pin);
         if (passwordIsCorrect) {
@@ -30,9 +29,7 @@ exports.login = async (req, res) => {
         } else {
           res.status(401).json({ message: "Userfailed" });
         }
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) {}
     }
   } catch (error) {
     res.status(500).json({ message: error.message || "Error Occured" });
@@ -72,7 +69,6 @@ exports.getHotelDetailsByLoc = async (req, res) => {
     let cityresp = await User.find({ city });
     res.status(200).json({ hotels: cityresp });
   } catch (error) {
-    console.log(error);
     res.satus(500).send({ message: error.message || "Error Occured" });
   }
 };

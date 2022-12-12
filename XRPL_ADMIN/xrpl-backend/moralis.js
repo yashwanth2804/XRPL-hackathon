@@ -8,8 +8,6 @@ const runApp = async () => {
   });
 
   const response = await Moralis.EvmApi.ipfs.uploadFolder({ abi: "s" });
-
-  console.log(response.toJSON());
 };
 
 runApp();

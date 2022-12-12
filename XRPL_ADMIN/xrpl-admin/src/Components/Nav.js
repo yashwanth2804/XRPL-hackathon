@@ -3,7 +3,7 @@ import { useGlobalState } from "../state";
 
 function Nav() {
   const [admin, setAdmin] = useGlobalState("admin");
-  console.log("@@ nav", admin);
+
   return (
     <div className="bg-brand h-[60px] flex justify-between mx-4 py-2 px-2 content-center">
       <img

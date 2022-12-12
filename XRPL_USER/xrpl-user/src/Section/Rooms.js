@@ -49,7 +49,7 @@ function Rooms() {
 
   useEffect(() => {
     let socket;
-    console.log(
+   
       "### called  ---------------------------->",
       Object.keys(authorisingResp).length
     );
@@ -60,15 +60,15 @@ function Rooms() {
       // Set up event listeners to handle incoming messages
       socket.onmessage = async (event) => {
         // Handle incoming message
-        console.log(event);
+       
         const dataparsed = JSON.parse(event.data);
         if (dataparsed.signed !== undefined) {
           // has signed or rejected
-          console.log("----------$$------>", dataparsed.signed);
+         
           if (dataparsed.signed == true) {
             // make api call update
-            console.log("&&&&&&&&&&&&&& ACCEPTED &&&&&&&&&&");
-            console.log(dataparsed);
+           
+           
             const resp = await axios.post(
               "http://localhost:4000/hotel/acceptoffer",
               {
@@ -77,16 +77,16 @@ function Rooms() {
                 price: selectePrice,
               }
             );
-            console.log("$$$$$$");
-            console.log(resp);
+           
+           
             if (resp.status == 200) {
               const { result } = resp.data;
-              console.log(result);
+             
 
               handleOpen();
             }
           } else {
-            console.log("&&&&&&&&&&&&&& rejEPTED &&&&&&&&&&");
+           
           }
           setTxStatus(dataparsed.signed);
           loadRooms();
@@ -96,7 +96,7 @@ function Rooms() {
 
       socket.onclose = (event) => {
         // Handle WebSocket close
-        console.log(event);
+       
       };
 
       // Save the WebSocket connection in state
@@ -129,12 +129,12 @@ function Rooms() {
     );
     if (resp.status == 200) {
       const { refs } = resp.data.auth;
-      console.log(refs);
+     
       setAuthorisingResp(refs);
     }
   };
   const bookRoom = (_sellofferid, _nftid, _price) => {
-    console.log("Selcted sell offer id ", _sellofferid);
+   
     setselectedSellOffer(_sellofferid);
     setselecteNFT(_nftid);
     setselectePrice(_price);

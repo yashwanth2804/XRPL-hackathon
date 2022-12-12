@@ -8,7 +8,6 @@ import {
 } from "@material-tailwind/react";
 
 export default function Dialog(props) {
-  console.log("@@", props);
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(!open);

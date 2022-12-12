@@ -15,8 +15,7 @@ async function selfMinting(Tickets, issuer, taxon) {
       TransferFee: 50000,
       NFTokenTaxon: parseInt(taxon),
     };
-    console.log("$$$ \n", transactionBlob);
+
     const tx = await client.submit(transactionBlob, { wallet: minter });
-    console.log("&&& ==> \n", tx);
   }
 }

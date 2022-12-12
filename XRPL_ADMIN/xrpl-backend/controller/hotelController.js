@@ -5,7 +5,7 @@ const bulkMint = require("./XRPL/bulkmint");
 const mongoose = require("mongoose");
 
 exports.getCurrentMinter = async (req, res) => {
-  console.log("@@ get current miter");
+ 
   res.status(200).json({ minter: process.env.xrpaddr });
 };
 /**
@@ -15,10 +15,10 @@ exports.getCurrentMinter = async (req, res) => {
 exports.getHotels = async (req, res) => {
   try {
     let hoteltaxon = req.query.taxonid;
-    console.log("@@ hoteltacon", hoteltaxon);
+   
 
     const hotelsList = await Hotel.find({ hoteltaxon });
-    console.log("@@ hotelsList", hotelsList);
+   
     // await bulkMint.bulkmint();
     res.status(200).json({ hotelsList });
   } catch (error) {
@@ -28,10 +28,10 @@ exports.getHotels = async (req, res) => {
 
 //getUserBookings
 exports.getUserBookings = async (req, res) => {
-  console.log(req);
+ 
   try {
     let xrpaddr = req.query.xrpaddr;
-    console.log("@@ XRP addr", xrpaddr);
+   
     const bookings = await Hotel.find({ bookeraddr: xrpaddr });
     res.status(200).json({ bookings });
   } catch (error) {
@@ -40,10 +40,10 @@ exports.getUserBookings = async (req, res) => {
 };
 
 exports.makeAuthorizedMinter = async (req, res) => {
-  console.log(req);
+ 
   try {
     let xrpaddr = req.query.xrpaddr;
-    console.log("@@ XRP addr", xrpaddr);
+   
     const payload = await bulkMint.authorizeMinter(xrpaddr);
     res.status(200).json({ auth: payload });
   } catch (error) {
@@ -58,7 +58,7 @@ exports.acceptNFTOffer = async (req, res) => {
     let nftokenid = req.body.nftokenid;
     let price = req.body.price;
 
-    console.log(
+   
       "@@ XRP addr for NFT offer and NFT id",
       xrpaddr,
       nftokenid,
@@ -87,9 +87,9 @@ exports.acceptNFTOffer = async (req, res) => {
         parseInt(price) * 0.8,
         result.ownerxrpaddr
       );
-      console.log("RR ===>", r);
+     
     }
-    console.log("@@ resp --->", result);
+   
     res.status(200).json({ result });
   } catch (error) {
     res.status(500).json({ message: error.message || "Error Occured" });
@@ -102,11 +102,11 @@ exports.acceptNFTOffer = async (req, res) => {
  * @param {*} res
  */
 exports.makeAuthorizedNFTAcceptOffer = async (req, res) => {
-  console.log(req);
+ 
   try {
     let xrpaddr = req.query.xrpaddr;
     let offerid = req.query.offerid;
-    console.log("@@ XRP addr for NFT offer", xrpaddr);
+   
     const payload = await bulkMint.authorizeNFTAcceptOffer(xrpaddr, offerid);
     res.status(200).json({ auth: payload });
   } catch (error) {
@@ -145,7 +145,7 @@ exports.saveHotels = async (req, res) => {
     // res.status(200).json({ ress });
     res.status(200).json({ mintedNFTHotelListObj });
   } catch (error) {
-    console.log("Insertmany ", error);
+   
     res.status(500).json({ message: error.message || "Error Occured" });
   }
 };

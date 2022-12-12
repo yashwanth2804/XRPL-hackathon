@@ -9,8 +9,6 @@ console.log(epochr);
 
 if (elapsedHours >= 24) {
   // 24 hours or more have passed
-  console.log("24 hours or more have passed since the epoch timestamp");
 } else {
   // Less than 24 hours have passed
-  console.log("Less than 24 hours have passed since the epoch timestamp");
 }

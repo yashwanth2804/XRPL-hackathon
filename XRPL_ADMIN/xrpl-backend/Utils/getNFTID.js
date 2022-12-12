@@ -23,7 +23,6 @@ const getNftIdfromHash = async (hash) => {
   const resp = await axios(config);
 
   const affNodes = resp.data.result.meta.AffectedNodes;
-  console.log("");
 
   const NFTTokenObject = affNodes.find((e) => {
     if (

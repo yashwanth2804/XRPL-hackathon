@@ -35,7 +35,6 @@ function App() {
   }, [addr, pin, logged]);
 
   useEffect(() => {
-    console.log("useeffect Appjs");
     if (logged) {
       login();
       getCurrentMinter();
@@ -43,7 +42,6 @@ function App() {
   }, []);
 
   const login = async () => {
-    console.log("@@ ", pin, addr);
     const resp = await axios.post("http://localhost:4000/hadmin/login", {
       pin,
       xrpaddr: addr,
@@ -52,7 +50,6 @@ function App() {
       city,
     });
 
-    console.log(resp);
     if (resp.status == 200) {
       setLogged(true);
       const { user } = resp.data;
@@ -60,10 +57,8 @@ function App() {
     }
   };
   const getCurrentMinter = async () => {
-    console.log("@@ loading cuurent minter");
     const resp = await axios.get("http://localhost:4000/hotel/currentMinter");
     setcurrentMinter(resp.data.minter);
-    console.log("@@ current minter", resp.data.minter);
   };
   return (
     <div className="bg-bgcolor h-screen w-screen">

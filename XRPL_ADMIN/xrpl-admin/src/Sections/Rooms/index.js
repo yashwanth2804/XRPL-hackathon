@@ -27,7 +27,6 @@ function Rooms() {
   const [addRoom, setAddRoom] = useGlobalState("addRoom");
   const [admin, setAdmin] = useGlobalState("admin");
 
-  console.log("FIRST", roomsList);
   const [roomsListWithId, setRoomseLitWithId] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
   const [isMinting, setisMinting] = useState(false);
@@ -63,7 +62,6 @@ function Rooms() {
   };
 
   const updateCheckedRooms = (index) => {
-    console.log("index", index);
     const updateListRooms = roomsListWithId.map((r) =>
       r.id === index ? { ...r, selected: !r.selected } : r
     );
@@ -113,7 +111,7 @@ function Rooms() {
       hotelname: admin.hotelname,
       image: "",
     }));
-    console.log("^^^^^^^^^^^^^^^^^^^^6", roomsObj);
+
     const resp = await axios.post("http://localhost:4000/hotel/list", {
       hotelList: roomsObj,
     });
@@ -124,7 +122,6 @@ function Rooms() {
     } else {
       sethasError(true);
     }
-    console.log("@@ ", resp);
   };
   return (
     <div className="flex flex-col relative h-[80vh]  p-2">

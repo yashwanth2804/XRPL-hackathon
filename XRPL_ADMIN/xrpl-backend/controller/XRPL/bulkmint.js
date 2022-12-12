@@ -28,15 +28,15 @@ async function reserveTickets(ticketCount) {
   //---------------------------------------------------- Sign the transaction.
   const signedTransaction = minter.sign(ticketTransaction);
   const tx = await client.submitAndWait(signedTransaction.tx_blob);
-  console.log(tx);
+ 
 }
 exports.bulkmint = async (hotelObj) => {
-  console.log("@@ starting xrpl", minter);
+ 
   await client.connect();
 
   //reserve Tickets
   await reserveTickets(hotelObj.length);
-  console.log("Reserving " + hotelObj.length + " ticket");
+ 
 
   //get reserve tickets
   let reserveTicketsResponse = await client.request({
@@ -49,17 +49,17 @@ exports.bulkmint = async (hotelObj) => {
     (el) => el.TicketSequence
   );
 
-  console.log(Tickets);
+ 
   // await selfMinting(Tickets);
   const mintedNFTsLedgerIndex = await mintOnbehalf(Tickets, hotelObj);
-  console.log("********************mintedNFTsLedgerIndex********************");
-  console.log(mintedNFTsLedgerIndex);
+ 
+ 
 
   return mintedNFTsLedgerIndex;
 };
 
 exports.authorizeNFTAcceptOffer = async (senderXrpAddr, _offerId) => {
-  console.log(
+ 
     "@@ starting xrpl and Making Authorized nft accept offer",
     minter.address,
     " Sender addr",
@@ -78,16 +78,16 @@ exports.authorizeNFTAcceptOffer = async (senderXrpAddr, _offerId) => {
       NFTokenSellOffer: _offerId,
     };
     const payload = await Sdk.payload.create(transactionBlob, true);
-    console.log("PAYLOAD", payload);
+   
     return payload;
   } catch (error) {
-    console.log(error);
+   
   }
 };
 
 exports.sendXRP = async (amt, owner) => {
   await client.connect();
-  console.log("SENDING XRP AMT ", amt, " == ", owner);
+ 
   const prepared = await client.autofill({
     TransactionType: "Payment",
     Account: minter.address,
@@ -96,12 +96,12 @@ exports.sendXRP = async (amt, owner) => {
   });
   const tx_signed = minter.sign(prepared);
   const tx = await client.submitAndWait(tx_signed.tx_blob);
-  console.log("==>tx", tx);
+ 
   return 1;
 };
 
 exports.authorizeMinter = async (senderXrpAddr) => {
-  console.log(
+ 
     "@@ starting xrpl and Making Authorized minter",
     minter.address,
     " Sender addr",
@@ -122,10 +122,10 @@ exports.authorizeMinter = async (senderXrpAddr) => {
       SetFlag: xrpl.AccountSetAsfFlags.asfAuthorizedNFTokenMinter,
     };
     const payload = await Sdk.payload.create(setAuthoziedTX, true);
-    console.log("PAYLOAD", payload);
+   
     return payload;
   } catch (error) {
-    console.log(error);
+   
   }
 };
 
@@ -148,22 +148,22 @@ async function mintOnbehalf(Tickets, hotelObj) {
 
     //const current_LedgerIndex = tx.result.tx_json.ledger_index;
     const LedgerHash = tx.result.tx_json.hash;
-    console.log("*********Ledger hash**********");
-    console.log(LedgerHash);
-    console.log("******************");
+   
+   
+   
 
     const NFTID = await getNftIdfromHash(LedgerHash);
     if (NFTID.length == 0) return;
-    console.log("*********NFTID**********");
-    console.log(NFTID);
-    console.log("******************");
+   
+   
+   
     const { sellOfferId, sellOfferHash } = await createSellOffer(
       NFTID,
       hotelObj[i].price
     );
     const obj = { NFTID, LedgerHash, sellOfferId, sellOfferHash };
     ledgerHashandNftoken.push(obj);
-    // console.log("() ===>", ledgerHashandNftoken);
+    //
 
     //ledgerHashandNftoken.push(tx.result.tx_json.ledger_index);
   }
@@ -172,7 +172,7 @@ async function mintOnbehalf(Tickets, hotelObj) {
 }
 
 async function createSellOffer(NFTokinId, price) {
-  console.log("## price", price);
+ 
   let transactionBlob = {
     TransactionType: "NFTokenCreateOffer",
     Account: minter.address,
@@ -186,7 +186,7 @@ async function createSellOffer(NFTokinId, price) {
   const sellOfferHash = tx.result.hash;
 
   const affNodes = tx.result.meta.AffectedNodes;
-  console.log("@@ createSellOffer ==>", tx.result.meta.AffectedNodes);
+ 
   const NFTTokenOfferObject = affNodes.find((e) => {
     if (
       e.CreatedNode !== undefined &&
@@ -195,7 +195,7 @@ async function createSellOffer(NFTokinId, price) {
       return e;
     }
   });
-  console.log(
+ 
     "@@ NFTTokenOfferObject ===>",
     NFTTokenOfferObject.CreatedNode.LedgerIndex,
     "@@ offer has ==>",
@@ -227,11 +227,11 @@ const getNftIdfromHash = async (hash) => {
     },
     data: data,
   };
-  console.log("Sleeping 5 sec");
+ 
   await new Promise((resolve) => setTimeout(resolve, 5000));
   const resp = await axios(config);
 
-  console.log("=====>", resp.data);
+ 
   try {
     const affNodes = resp.data.result.meta.AffectedNodes;
 
@@ -254,7 +254,7 @@ const getNftIdfromHash = async (hash) => {
     const nftID = Object.assign({}, ...NFTID).NFToken.NFTokenID;
     return nftID;
   } catch (e) {
-    console.log(e);
+   
   }
   return [];
 };

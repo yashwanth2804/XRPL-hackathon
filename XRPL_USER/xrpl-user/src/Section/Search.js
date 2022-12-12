@@ -24,14 +24,13 @@ function Search() {
   };
 
   const handleCardClick = async (taxon) => {
-    console.log("first");
     const resp = await axios.get("http://localhost:4000/hotel", {
       params: { taxonid: taxon },
     });
-    console.log(resp.data);
+
     const { hotelsList } = resp.data;
     const y = Array(10).fill(hotelsList[0]);
-    console.log("Arry fill", y);
+
     setRooms(hotelsList);
     setselectedHotelTaxon(taxon);
   };
