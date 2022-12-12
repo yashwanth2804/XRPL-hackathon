@@ -18,6 +18,17 @@ Run `npm start` , to spin-up the front end app for the renter ui at port 5000
 
 Run `npm start`, to spin-up the backend server at port 4000
 
+Make a `.env` file which holds these values
+```
+MONGODB_URI=mongodb+srv://<username>:<password>@realmcluster.uc7kw.mongodb.net/XRPL?retryWrites=true&w=majority
+
+
+## Mintroom  contract
+seed=<account seed> # starts with s
+xrpaddr=<public aadr> # start with r
+
+```
+
 >  # [Youtube Video Link](https://youtu.be/8Qm5_rw7cFE)
 ## Inspiration
 The idea came to mind realising that we have the opportunity to issue  something that can be ownable  and publicly verifiable with the help of blockchain technology . There is a gap in the real world computation speed and what   blockains are capable  of, there are some limitations in terms of speed and cost.Using the leverage of the Ripple XLS-20d, these market gaps can be filled up.
